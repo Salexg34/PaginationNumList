@@ -2,7 +2,7 @@ const slidesCount = document.querySelectorAll('div.slider__cards').length;
 const sliderWrapper = document.querySelector('.slider__wrapper');
 const buttonNext = document.querySelector('.slider__button_next');
 const buttonPrev = document.querySelector('.slider__button_prev');
-const slider = document.querySelector('.slider');
+export const slider = document.querySelector('.slider');
 
 const sliderObject = {
     slidesCount,
@@ -65,7 +65,7 @@ function turnSlides (side) {
 };
 
 function checkOffset () {
-    console.log(offset, -sliderObject.maxWidth())
+    // console.log(offset, -sliderObject.maxWidth())
     if (offset >= 0) {
         buttonPrev.setAttribute('disabled', true);
         sliderWrapper.style.transform = `translateX(${0}px)`;

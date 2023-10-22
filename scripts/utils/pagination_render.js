@@ -7,16 +7,14 @@
 // } 
 
 
-// import { slider } from "../slider_script.js";
+import { slider } from "../slider_script.js";
+import { sliderWrapper } from "./generate_slides.js";
 export const renderCards = (cardsArr) => {
     const VISIBLE_RANGE = 10;
     const paginationPage = Math.ceil(cardsArr.length / VISIBLE_RANGE);
-    const sliderWrapper = document.querySelector('.slider__wrapper');
-    const slider = document.querySelector('.slider');
     const sliderPaginationNum = document.createElement('div');
     sliderPaginationNum.classList.add('slider__pagination-num');
     slider.appendChild(sliderPaginationNum)
-    console.log(paginationPage);
 
     function updateSlider(startindex) {
         sliderWrapper.innerHTML = '';

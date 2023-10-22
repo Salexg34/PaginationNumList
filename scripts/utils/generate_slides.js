@@ -80,23 +80,25 @@ const createSlider = () => {
         const sliderWrapper = document.querySelector('.slider__wrapper');
         sliderWrapper.removeChild(defaultCard);
         // addIndexElementToCard(defaultCard, 1)
-        return arrayCards
-        //     ELEMENTS_COUNT
-        // }
+        return {
+            arrayCards,
+            sliderWrapper
+            //     ELEMENTS_COUNT
+        }
 
     };
 
     return generateSlides
-        
+
 
 }
+const generatorSlider = createSlider()
+// export const sliderWrapper = generatorSlider.sliderWrapper;
+// export const arrayCards = generatorSlider.arrayCards;
 
-export const generatorSlider = createSlider()
-
-// const funcGeneratorSlider = generatorSlider();
-// export const arrayCards = funcGeneratorSlider.arrayCards;
-// export const elementsCount = funcGeneratorSlider.ELEMENTS_COUNT;
-// console.log(arrayCards)
+const dataGeneratorSlider = generatorSlider();
+export const arrayCards = dataGeneratorSlider.arrayCards;
+export const sliderWrapper = dataGeneratorSlider.sliderWrapper;
 
 
 
