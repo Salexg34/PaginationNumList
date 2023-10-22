@@ -92,6 +92,7 @@ const createSlider = () => {
 }
 
 export const generatorSlider = createSlider()
+
 // const funcGeneratorSlider = generatorSlider();
 // export const arrayCards = funcGeneratorSlider.arrayCards;
 // export const elementsCount = funcGeneratorSlider.ELEMENTS_COUNT;
