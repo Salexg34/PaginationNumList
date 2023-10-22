@@ -1,0 +1,59 @@
+header {
+    background-color: var(--background-header-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    width: 100%;
+    padding: 20px 0;
+}
+
+.nav {
+    display: inline-block;
+    
+    list-style-type: none;
+    margin: 0 23% 0 16%;
+}
+header .logo img {
+    vertical-align: middle;
+    position: relative;
+    top: -8px;
+    margin: 0 10px 0 0;
+}
+
+.nav_item {
+    display: inline;
+    margin-right: 40px;
+
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.375rem;
+
+    color: white;
+}
+
+.nav_item-last {
+    margin-right: 0;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: var(--main-button-color);
+    border-radius: 5px;
+    height: 100%;
+
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 21.79px;
+    text-decoration: none;
+    color: white;
+
+    transition: 0.5s;
+}
+
+.button:hover {
+    /* padding: 20px 40px; */
+    box-shadow: 5px 5px 5px #31599d;
+}

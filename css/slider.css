@@ -1,0 +1,130 @@
+.slider {
+    --cards-width: 300px;
+    --cards-to-show: 3;
+    --cards-gap: 90px;
+    --cards-to-scrol: 3;
+    width: calc(var(--cards-to-show) * (var(--cards-width) + var(--cards-gap)) - var(--cards-gap));
+    /* height: 600px; */
+    padding-top: 50px;
+
+    overflow: hidden;
+    /* border: 5px solid white; */
+    position: relative;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+
+}
+
+
+.slider__wrapper {
+    /* max-width: calc(var(--cards-to-show) * (var(--cards-width) + var(--cards-gap)) - var(--cards-gap));
+    display: flex;
+    gap: var(--cards-gap);
+    position: relative;
+    left: 0;
+    transition: all 1s; */
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+
+}
+
+.slider__cards {
+    width: var(--cards-width);
+    /* height: 350px; */
+    flex-shrink: 0;
+
+    border-radius: 10px;
+    /* opacity: 0.10000000149011612; */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, #000 100%);
+    backdrop-filter: blur(100px);
+    /* background-color: blue; */
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
+}
+
+.slider__cards h3 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.slider__cards p {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.slider__logo {
+    width: 35%;
+
+}
+
+.slider__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+
+}
+
+.slider__button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.slider__button {
+    width: 125px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, #000 100%);
+    backdrop-filter: blur(100px);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+   
+    /* background-color: red; */
+
+}
+
+.active {
+    background-color: var(--main-button-color);
+    }
+
+.dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    /* background-color: var(--main-button-color); */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+
+
+.slider__pagination-num {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px 0;
+}
+
+.pagination__num{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    width: 40px;
+    height: 40px;
+    border: solid 2px;
+    cursor: pointer;
+
+}

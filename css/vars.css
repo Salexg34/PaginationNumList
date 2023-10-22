@@ -1,0 +1,9 @@
+:root {
+    --background-header-color: #0A1220; /* цвет хедера */
+    --main-button-color: #3A68B8;
+    --background-slider-color: #08101E; /* цвет слайдера */
+    --background-content-color: #020A18; /* цвет контент секции */
+    --background-footer-color: #070F1C; /* цвет футера */
+    --background-card-color: linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, #FFF 100%);
+
+}

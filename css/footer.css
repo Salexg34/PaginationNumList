@@ -1,0 +1,59 @@
+footer {
+    background-color: var(--background-footer-color);
+}
+.container-footer {
+
+    margin: 0px auto;
+    padding: 0px 50px; 
+
+}
+
+.footer-menu {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 100px 0 30px;
+
+
+}
+
+.footer-menu__item {
+    display: inline-block;
+    
+    list-style-type: none;
+    width: 19%;
+    max-width: 165px;
+    margin-right: 50px;
+   
+}
+
+.footer-content {
+    display: inline-block;
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+.footer-content__text {
+    margin-top: 20px;
+    
+    font-weight: 450;
+    font-size: 14px;
+    line-height: 18px;
+
+    color: white;
+}
+
+.about-the-store {
+    display: block;
+    margin-top: 30px;
+    
+    width: 260px;
+    height: 55px;
+
+    font-weight: 450;
+    font-size: 14px;
+    line-height: 18px;  
+}
+
+.footer-menu__item_bind-top {
+    vertical-align: top;
+}
