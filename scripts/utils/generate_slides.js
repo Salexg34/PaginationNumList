@@ -60,7 +60,7 @@ const addIndexElementToCard = (card, index) => {
     card.appendChild(defaultIndexEl);
 }
 const createSlider = () => {
-    const ELEMENTS_COUNT = 100;
+    const ELEMENTS_COUNT = 96;
     let arrayCards = [];
     let defaultCard = document.querySelector('.slider__cards');
 
@@ -95,6 +95,9 @@ const createSlider = () => {
 const generatorSlider = createSlider()
 // export const sliderWrapper = generatorSlider.sliderWrapper;
 // export const arrayCards = generatorSlider.arrayCards;
+// console.log(sliderWrapper)
+// console.log(generatorSlider)
+
 
 const dataGeneratorSlider = generatorSlider();
 export const arrayCards = dataGeneratorSlider.arrayCards;
