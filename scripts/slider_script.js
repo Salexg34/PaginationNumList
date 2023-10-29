@@ -9,39 +9,15 @@ const sliderObject = {
     cardsWidth: parseInt(getComputedStyle(slider).getPropertyValue('--cards-width')),
     cardsGap: parseInt(getComputedStyle(slider).getPropertyValue('--cards-gap')),
     cardsToShow: parseInt(getComputedStyle(slider).getPropertyValue('--cards-to-show')),
-    maxWidth() {
+    maxWidth () {
         return (this.cardsWidth + this.cardsGap) * (this.slidesCount - this.cardsToShow);
     },
-    fullCardsWidth(slidesToScroll = this.cardsToShow) {
+    fullCardsWidth (slidesToScroll = this.cardsToShow) {
         return (this.cardsWidth + this.cardsGap) * slidesToScroll;
-    }
+    },
 };
 
 let offset = 0;
-
-// const cardsWidth = parseInt(getComputedStyle(slider).getPropertyValue('--cards-width'));
-// const cardsGap = parseInt(getComputedStyle(slider).getPropertyValue('--cards-gap'));
-// const cardsToShow = parseInt(getComputedStyle(slider).getPropertyValue('--cards-to-show'));
-// const maxWidth = (cardsWidth + cardsGap) * (slidesCount - cardsToShow);
-// const fullCardsWidth = (cardsWidth + cardsGap) * cardsToShow;
-// необходимо ограничить максимальную длину по количеству карточек
-
-//  function SliderObject (width, gap, toShow, maxWidth, fullWidth) {
-//     this.width = width;
-//     this.gap = gap;
-//     this.toShow = toShow;
-//     this.maxWidth = maxWidth;
-//     this.fullWidth = fullWidth;
-//  }
-
-//  const sliderObj = new SliderObject(
-//     width=parseInt(getComputedStyle(slider).getPropertyValue('--cards-width')),
-//     cardsGap=parseInt(getComputedStyle(slider).getPropertyValue('--cards-gap')),
-//     cardsToShow,
-//     maxWidth,
-//     fullCardsWidth
-// );
-// console.log(sliderObj);
 
 checkOffset(sliderObject);
 
@@ -56,7 +32,7 @@ buttonPrev.addEventListener('click', function () {
 function turnSlides (side) {
     if (side == 'left') {
         offset += sliderObject.fullCardsWidth();
-    } else if ( side == 'rigth') {
+    } else if (side == 'rigth') {
         offset -= sliderObject.fullCardsWidth();
     }
 
@@ -65,7 +41,6 @@ function turnSlides (side) {
 };
 
 function checkOffset () {
-    // console.log(offset, -sliderObject.maxWidth())
     if (offset >= 0) {
         buttonPrev.setAttribute('disabled', true);
         sliderWrapper.style.transform = `translateX(${0}px)`;

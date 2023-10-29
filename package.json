@@ -14,8 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.52.0",
+    "eslint-config-prettier": "8.5.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-browser": "^0.0.0",
     "eslint-plugin-import": "^2.29.0"
   }
 }

@@ -32,7 +32,7 @@
 //     }
 // };
 
-export const check = function checkOffset({offset, maxWidth, buttonPrev, sliderWrapper, buttonNext}) {
+export const check = function checkOffset ({offset, maxWidth, buttonPrev, sliderWrapper, buttonNext}) {
     if (offset >= 0) {
         buttonPrev.setAttribute('disabled', true);
         sliderWrapper.style.transform = `translateX(${0}px)`;
@@ -45,7 +45,7 @@ export const check = function checkOffset({offset, maxWidth, buttonPrev, sliderW
         buttonNext.setAttribute('disabled', true);
         sliderWrapper.style.transform = `translateX(${-maxWidth}px)`;
         offset = -maxWidth;
-        console.log('stop', offset, -maxWidth)
+        console.log('stop', offset, -maxWidth);
     } else {
         buttonNext.removeAttribute('disabled');
     }

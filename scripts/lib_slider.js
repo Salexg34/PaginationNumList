@@ -1,11 +1,10 @@
-import { getMaxWidth } from "./utils/get_max_width.js";
-import { changeSliderProperties } from "./utils/change_slider_properties.js";
-import { findElements } from "./utils/find_elements.js";
-import { check } from "./utils/check_offset.js";
-import { paginationSlider } from "./utils/pagination_slider.js";
+import {changeSliderProperties} from './utils/change_slider_properties.js';
+import {check} from './utils/check_offset.js';
+import {findElements} from './utils/find_elements.js';
+import {getMaxWidth} from './utils/get_max_width.js';
+import {paginationSlider} from './utils/pagination_slider.js';
 
 // import  choiceSlider from "./utils/choice_slider.js";
-
 
 /**
  * InitSlider
@@ -20,22 +19,22 @@ export const initSlider = function (scroll, width, gap, toShow) {
         buttonNext,
         buttonPrev,
         sliderWrapper,
-        pagination
+        pagination,
     } = findElements();
 
     if (toShow <= scroll) {
         scroll = toShow;
     };
 
-    changeSliderProperties({ width, gap, toShow });
+    changeSliderProperties({width, gap, toShow});
 
-    const maxWidth = getMaxWidth({ width, gap, slidesCount, toShow });
+    const maxWidth = getMaxWidth({width, gap, slidesCount, toShow});
     // const fullCardsWidth = getFullCardsWidth({width, gap, scroll})
 
     let offset = 0;
     let currentDot = 1;
     
-    check({ offset, maxWidth, buttonPrev, sliderWrapper, buttonNext });
+    check({offset, maxWidth, buttonPrev, sliderWrapper, buttonNext});
 
     buttonNext.addEventListener('click', function () {
         turnSlides('rigth');
@@ -48,21 +47,21 @@ export const initSlider = function (scroll, width, gap, toShow) {
 
     document.querySelectorAll('.slider__cards').forEach((item, idx) => {
         item.setAttribute('data-slide-index', idx);
-    })
+    });
 
-    function turnSlides(side) {
+    function turnSlides (side) {
         if (side == 'left') {
-            currentDot -= 1
+            currentDot -= 1;
         } else if (side == 'rigth') {
-            currentDot += 1
+            currentDot += 1;
         }
 
         choiceSlider(currentDot);
     };
    
-    paginationSlider({ slidesCount, pagination, choiceSlider });
+    paginationSlider({slidesCount, pagination, choiceSlider});
 
-    function choiceSlider(slideIndex) {
+    function choiceSlider (slideIndex) {
 
         currentDot = slideIndex;
 
@@ -73,16 +72,12 @@ export const initSlider = function (scroll, width, gap, toShow) {
 
         const currentElements = document.querySelectorAll(`[data-slide-index = '${currentDot}']`);
         currentElements.forEach(function (item) {
-            item.classList.add('active')
-        })
+            item.classList.add('active');
+        });
 
         offset = -((width + gap) * currentDot) + (width + gap);
         sliderWrapper.style.transform = `translateX(${offset}px)`;
-        check({ offset, maxWidth, buttonPrev, sliderWrapper, buttonNext });
-        
+        check({offset, maxWidth, buttonPrev, sliderWrapper, buttonNext});
 
     }
 };
-// const offsetInitSlider = initSlider()
-// export const offsetSplice = offsetInitSlider.offset;
-// console.log(offsetSplice)

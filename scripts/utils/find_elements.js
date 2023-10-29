@@ -1,4 +1,4 @@
- /**
+/**
  * Модуль findElements
  * @module utils/find_elements
  *
@@ -25,6 +25,6 @@ export const findElements = function () {
         buttonPrev, 
         sliderWrapper,
         // slider,
-        pagination
-    }
-}
+        pagination,
+    };
+};
