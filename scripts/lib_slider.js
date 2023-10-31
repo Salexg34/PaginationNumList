@@ -61,11 +61,16 @@ export const initSlider = function (scroll, width, gap, toShow) {
    
     paginationSlider({slidesCount, pagination, choiceSlider});
 
+    window.onhashchange = () => {
+        console.log(123);
+        choiceSlider(1);
+    };
+
     function choiceSlider (slideIndex) {
 
         currentDot = slideIndex;
 
-        const activeElements = document.querySelectorAll('div.active');
+        const activeElements = document.querySelectorAll('.dot.active');
         activeElements.forEach(function (item) {
             item.classList.remove('active');
         });

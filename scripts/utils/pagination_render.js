@@ -21,16 +21,23 @@ export const renderCards = (cardsArr) => {
         updateSlider(startindex);
         const queryPageIndex = new URL(window.location.href);
         queryPageIndex.searchParams.set('indexPage', i);
-        window.history.replaceState({indexPage: i}, '', queryPageIndex);
+        window.history.pushState({indexPage: i}, '', queryPageIndex);
     }
 
     for (let i = 1; i <= paginationPage; i++) {
         const paginationNum = document.createElement('div');
         paginationNum.textContent = i;
         paginationNum.classList.add('pagination__num');
+        const currentPage = new URL(window.location.href).searchParams.get('indexPage');
+        console.log(currentPage);
+        if (i == currentPage || (!currentPage && i == 1)) {
+            paginationNum.classList.add('active');
+        }
 
         paginationNum.addEventListener('click', () => {
             pageQueryParams(i);
+            document.querySelector('.pagination__num.active').classList.remove('active');
+            paginationNum.classList.add('active');
 
         });
         sliderPaginationNum.appendChild(paginationNum);
@@ -38,7 +45,7 @@ export const renderCards = (cardsArr) => {
     const url = new URLSearchParams(window.location.search);
     const indexPage = url.get('indexPage');
     if (indexPage) {
-        updateSlider(indexPage * VISIBLE_RANGE - VISIBLE_RANGE); // не нравится такое решение
+        updateSlider(indexPage * VISIBLE_RANGE - VISIBLE_RANGE);
     } else {
         updateSlider(0);
     }
