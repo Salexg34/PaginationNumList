@@ -3,6 +3,7 @@ import {check} from './utils/check_offset.js';
 import {findElements} from './utils/find_elements.js';
 import {getMaxWidth} from './utils/get_max_width.js';
 import {paginationSlider} from './utils/pagination_slider.js';
+// import {queryPageIndexForPagination} from './utils/pagination_render.js'
 
 // import  choiceSlider from "./utils/choice_slider.js";
 
@@ -33,7 +34,7 @@ export const initSlider = function (scroll, width, gap, toShow) {
 
     let offset = 0;
     let currentDot = 1;
-    
+
     check({offset, maxWidth, buttonPrev, sliderWrapper, buttonNext});
 
     buttonNext.addEventListener('click', function () {
@@ -58,31 +59,33 @@ export const initSlider = function (scroll, width, gap, toShow) {
 
         choiceSlider(currentDot);
     };
-   
+
     paginationSlider({slidesCount, pagination, choiceSlider});
 
-    window.onhashchange = () => {
-        console.log(123);
-        choiceSlider(1);
-    };
+    // window.onhashchange = () => {
+    //     console.log(123);
+    //     choiceSlider(5);
+    // };
 
     function choiceSlider (slideIndex) {
-
         currentDot = slideIndex;
 
         const activeElements = document.querySelectorAll('.dot.active');
         activeElements.forEach(function (item) {
             item.classList.remove('active');
         });
-
         const currentElements = document.querySelectorAll(`[data-slide-index = '${currentDot}']`);
         currentElements.forEach(function (item) {
             item.classList.add('active');
         });
-
         offset = -((width + gap) * currentDot) + (width + gap);
         sliderWrapper.style.transform = `translateX(${offset}px)`;
         check({offset, maxWidth, buttonPrev, sliderWrapper, buttonNext});
-
     }
+    return {
+        choiceSlider,
+        turnSlides,
+    };
 };
+
+export const libSlider = initSlider(1, 200, 40, 3);
