@@ -20,7 +20,8 @@ export const paginationSlider = function paginationSlider ({slidesCount, paginat
         paginationDot.innerHTML = '<img src="/img/slider/paginationDotActive.svg">';
         pagination.appendChild(paginationDot);
 
-        if (i == 1) {
+        if (i == 1) { // после обновления страницы активный слайдер только с индексом 1
+            // console.log(i);
             paginationDot.classList.add('active');
             document.querySelector(`[data-slide-index = '${i}']`).classList.add('active');
 

@@ -1,11 +1,10 @@
+import generalConsts from './consts/general.js';
 import {changeSliderProperties} from './utils/change_slider_properties.js';
 import {check} from './utils/check_offset.js';
 import {findElements} from './utils/find_elements.js';
+import {getDotNumberWithPage} from './utils/get-dot-number-with-page.js';
 import {getMaxWidth} from './utils/get_max_width.js';
 import {paginationSlider} from './utils/pagination_slider.js';
-// import {queryPageIndexForPagination} from './utils/pagination_render.js'
-
-// import  choiceSlider from "./utils/choice_slider.js";
 
 /**
  * InitSlider
@@ -23,14 +22,17 @@ export const initSlider = function (scroll, width, gap, toShow) {
         pagination,
     } = findElements();
 
+    sliderWrapper.addEventListener(generalConsts.URL_CHANGE_NAME, () => {
+        choiceSlider(1);
+    });
+
     if (toShow <= scroll) {
         scroll = toShow;
     };
 
     changeSliderProperties({width, gap, toShow});
 
-    const maxWidth = getMaxWidth({width, gap, slidesCount, toShow});
-    // const fullCardsWidth = getFullCardsWidth({width, gap, scroll})
+    const maxWidth = getMaxWidth({width, gap, slidesCount, cardsToShow: toShow});
 
     let offset = 0;
     let currentDot = 1;
@@ -46,10 +48,6 @@ export const initSlider = function (scroll, width, gap, toShow) {
 
     });
 
-    document.querySelectorAll('.slider__cards').forEach((item, idx) => {
-        item.setAttribute('data-slide-index', idx);
-    });
-
     function turnSlides (side) {
         if (side == 'left') {
             currentDot -= 1;
@@ -58,34 +56,39 @@ export const initSlider = function (scroll, width, gap, toShow) {
         }
 
         choiceSlider(currentDot);
+
     };
 
     paginationSlider({slidesCount, pagination, choiceSlider});
 
-    // window.onhashchange = () => {
-    //     console.log(123);
-    //     choiceSlider(5);
-    // };
-
     function choiceSlider (slideIndex) {
         currentDot = slideIndex;
-
+        
         const activeElements = document.querySelectorAll('.dot.active');
         activeElements.forEach(function (item) {
             item.classList.remove('active');
         });
-        const currentElements = document.querySelectorAll(`[data-slide-index = '${currentDot}']`);
-        currentElements.forEach(function (item) {
+
+        const activeSliderElements = document.querySelectorAll('.slider__cards.active');
+        activeSliderElements.forEach(function (item) {
+            item.classList.remove('active');
+        });
+
+        const currentElements = document.querySelectorAll(`
+            [data-slide-index = '${getDotNumberWithPage(currentDot)}']
+        `);
+
+        const currentDotElements = document.querySelectorAll(`
+            [data-slide-index = '${currentDot}']
+        `);
+        
+        const elementsToActivate = [...currentElements, ...currentDotElements];
+        elementsToActivate.forEach(function (item) {
             item.classList.add('active');
         });
+        
         offset = -((width + gap) * currentDot) + (width + gap);
         sliderWrapper.style.transform = `translateX(${offset}px)`;
         check({offset, maxWidth, buttonPrev, sliderWrapper, buttonNext});
     }
-    return {
-        choiceSlider,
-        turnSlides,
-    };
 };
-
-export const libSlider = initSlider(1, 200, 40, 3);
