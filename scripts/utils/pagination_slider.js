@@ -12,8 +12,13 @@
  * @returns {void}
  */
 
+import {getDotNumberWithPage} from "./get-dot-number-with-page.js";
+
 export const paginationSlider = function paginationSlider ({slidesCount, pagination, choiceSlider}) {
-    for (let i = 1; i < slidesCount - 1; i++) {
+    pagination.innerHTML = '';
+    
+    console.log(slidesCount, 'paginationSlider');
+    for (let i = 1; i < slidesCount + 1; i++) {
         const paginationDot = document.createElement('div');
         paginationDot.classList.add('dot');
         paginationDot.setAttribute('data-slide-index', i);
@@ -21,9 +26,11 @@ export const paginationSlider = function paginationSlider ({slidesCount, paginat
         pagination.appendChild(paginationDot);
 
         if (i == 1) { // после обновления страницы активный слайдер только с индексом 1
-            // console.log(i);
+            console.log(i);
             paginationDot.classList.add('active');
-            document.querySelector(`[data-slide-index = '${i}']`).classList.add('active');
+            document.querySelector(`
+                [data-slide-index = '${getDotNumberWithPage(i)}']
+            `).classList.add('active');
 
         }
 

@@ -22,17 +22,24 @@ export const initSlider = function (scroll, width, gap, toShow) {
         pagination,
     } = findElements();
 
+    let maxWidth = getMaxWidth({width, gap, slidesCount, cardsToShow: toShow});
+
     sliderWrapper.addEventListener(generalConsts.URL_CHANGE_NAME, () => {
         choiceSlider(1);
     });
 
+    // вешаем обработчик события на изменения значения из выпадающего списка
+    document.addEventListener('sizeChangeEvent', (event) => {
+        paginationSlider({slidesCount: event.pageSize, pagination, choiceSlider});
+        maxWidth = getMaxWidth({width, gap, slidesCount: event.pageSize, cardsToShow: toShow});
+        choiceSlider(1);
+    });
+    
     if (toShow <= scroll) {
         scroll = toShow;
     };
 
     changeSliderProperties({width, gap, toShow});
-
-    const maxWidth = getMaxWidth({width, gap, slidesCount, cardsToShow: toShow});
 
     let offset = 0;
     let currentDot = 1;
@@ -57,7 +64,7 @@ export const initSlider = function (scroll, width, gap, toShow) {
 
         choiceSlider(currentDot);
 
-    };
+    };    
 
     paginationSlider({slidesCount, pagination, choiceSlider});
 
@@ -77,10 +84,12 @@ export const initSlider = function (scroll, width, gap, toShow) {
         const currentElements = document.querySelectorAll(`
             [data-slide-index = '${getDotNumberWithPage(currentDot)}']
         `);
-
+        console.log(currentDot);
+        
         const currentDotElements = document.querySelectorAll(`
             [data-slide-index = '${currentDot}']
         `);
+        console.log(currentDot);
         
         const elementsToActivate = [...currentElements, ...currentDotElements];
         elementsToActivate.forEach(function (item) {
@@ -90,5 +99,6 @@ export const initSlider = function (scroll, width, gap, toShow) {
         offset = -((width + gap) * currentDot) + (width + gap);
         sliderWrapper.style.transform = `translateX(${offset}px)`;
         check({offset, maxWidth, buttonPrev, sliderWrapper, buttonNext});
+        console.log(maxWidth);
     }
 };

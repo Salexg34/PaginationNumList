@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    
+
     <section class="main__section">
         <div class="slider">
             <div class="slider__wrapper">
@@ -23,13 +23,19 @@
                         Lorem ipsum is placeholder text commonly used in print.
                     </p>
                 </div>
-                
+            </div>
 
-            
+            <div class="pagination" id="pagination">
+            </div>
+            <select name="quantity" id="quantitySelect">
+                <option class="quantity-selection" disabled hidden value="">--Выбери значение--</option>
+                <option class="quantity-selection" value="5">5</option>
+                <option class="quantity-selection" value="10">10</option>
+                <option class="quantity-selection" value="15">15</option>
+                <option class="quantity-selection" value="20">20</option>
+            </select>
         </div>
-        <div class="pagination" id="pagination">
-            
-        </div>
+
         <div class="slider__buttons">
             <button class="slider__button_next slider__button button">
                 Next
@@ -38,9 +44,10 @@
                 Preview
             </button>
         </div>
+
     </section>
 
-   
+
     <script type="module" src="./app.js"></script>
 </body>
 

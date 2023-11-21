@@ -7,7 +7,7 @@ const addIndexElementToCard = (card, index) => {
 };
 
 const createSlider = () => {
-    const ELEMENTS_COUNT = 96;
+    const ELEMENTS_COUNT = 120;
     const arrayCards = [];
     const defaultCard = document.querySelector('.slider__cards');
 
