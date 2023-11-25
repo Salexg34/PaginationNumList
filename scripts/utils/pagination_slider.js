@@ -12,7 +12,7 @@
  * @returns {void}
  */
 
-import {getDotNumberWithPage} from "./get-dot-number-with-page.js";
+import {getDotNumberWithPage} from './get-dot-number-with-page.js';
 
 export const paginationSlider = function paginationSlider ({slidesCount, pagination, choiceSlider}) {
     pagination.innerHTML = '';
