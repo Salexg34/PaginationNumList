@@ -10,22 +10,20 @@ export const renderCards = (cardsArr) => {
     /** 
      * Получаем значение visibleRange через функцию getQueryParam
     */
-    const {pageSize: visibleRange} = getNamedQueryParams();
+    const {pageSize, indexPage} = getNamedQueryParams();
 
     const {sliderWrapper} = findElements();
 
     function pageQueryParams (i) {
-        const startIndex = (i - 1) * visibleRange;
-        renderCards(startIndex);
-        
+        const startIndex = (i - 1) * pageSize;
+        renderCardsToDOM(startIndex);
         setQueryParam({key: 'indexPage', value: i});
         sliderWrapper.dispatchEvent(urlChangeEvent);
     }
     
-    function renderCards (startIndex) {
+    function renderCardsToDOM (startIndex) {
         const {pageSize: currentVisibleRange} = getNamedQueryParams();
         sliderWrapper.innerHTML = '';
-
         const endIndex = Math.min(startIndex + currentVisibleRange, cardsArr.length);
         for (let i = startIndex; i < endIndex; i++) {
             const cardElement = cardsArr[i];
@@ -36,14 +34,14 @@ export const renderCards = (cardsArr) => {
     addPaginationElements({
         paginationPagesCount: getPaginationPagesCount({
             cardsCount: cardsArr.length,
-            visibleRange,
+            pageSize,
         }),
         pageQueryParams,
     });
 
-    if (visibleRange) {
-        renderCards(visibleRange * visibleRange - visibleRange);
+    if (indexPage) {
+        renderCardsToDOM(indexPage * pageSize - pageSize);
     } else {
-        renderCards(0);
+        renderCardsToDOM(0);
     }
 };

@@ -4,7 +4,6 @@ export const getQueryParam = ({
     defaultValue,
 }) => {
     const queryParams = new URL(window.location.href);
-    console.log(queryParams);
     const selectedQueryParam = queryParams.searchParams.get(key);
     const convertedParam = typeConverter !== undefined 
         ? typeConverter(selectedQueryParam)

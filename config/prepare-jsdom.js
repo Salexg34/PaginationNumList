@@ -5,3 +5,4 @@ const htmlStructure = readFileSync('./index.html', {encoding: 'utf-8'});
 const dom = new JSDOM(htmlStructure);
     
 global.document = dom.window.document;
+global.window = dom.window;
