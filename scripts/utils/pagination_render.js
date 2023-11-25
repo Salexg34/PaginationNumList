@@ -5,27 +5,31 @@ import {getQueryParam} from './get-query-param.js';
 const urlChangeEvent = new CustomEvent(generalConsts.URL_CHANGE_NAME);
 
 export const renderCards = (cardsArr) => {
-    // вешаем обработчик события на изменения значения из выпадающего списка
+    /**
+     * вешаем обработчик события на изменения значения из выпадающего списка
+    */
     document.addEventListener('sizeChangeEvent', () => {
         renderCards(cardsArr);
     });
 
-    // Получаем значение visibleRange через функцию getQueryParam
+    /** 
+     * Получаем значение visibleRange через функцию getQueryParam
+    */
     const visibleRange = getQueryParam({
         key: 'pageSize',
         defaultValue: generalConsts.DEFAULT_PAGE_SIZE,
         typeConverter: parseInt,
     });
 
-    console.log(visibleRange);
-
     const slider = document.querySelector(generalConsts.SLIDER_CLASS);
     const sliderWrapper = document.querySelector(generalConsts.SLIDER_WRAPPER_CLASS);
     const paginationPage = Math.ceil(cardsArr.length / visibleRange);
     let sliderPaginationNum = document.querySelector('.slider__pagination-num');
 
-    //проверка на отсутствие / наличие пагинации
-    // при ее отсутствии - добавляем
+    /** 
+     * проверка на отсутствие / наличие пагинации
+     * при ее отсутствии - добавляем
+    */ 
     if (!sliderPaginationNum) {
         sliderPaginationNum = document.createElement('div');
         sliderPaginationNum.classList.add('slider__pagination-num');
@@ -49,7 +53,6 @@ export const renderCards = (cardsArr) => {
 
     function pageQueryParams (i) {
         const startindex = (i - 1) * visibleRange;
-        console.log(startindex);
         updateSlider(startindex);
         
         const queryPageIndex = new URL(window.location.href);
@@ -57,8 +60,10 @@ export const renderCards = (cardsArr) => {
         window.history.pushState({indexPage: i}, '', queryPageIndex);
         sliderWrapper.dispatchEvent(urlChangeEvent);
     }
-    //делаем проверку на наличие контента в коллекции дочерних элементов
-    //sliderPaginationNum, если он есть, то очищаем его
+    /** 
+     * делаем проверку на наличие контента в коллекции дочерних элементов
+     * sliderPaginationNum, если он есть, то очищаем его
+    */
     if (sliderPaginationNum.children) {
         sliderPaginationNum.innerHTML = '';
     }
