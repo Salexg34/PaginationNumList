@@ -4,7 +4,6 @@
  */
 import {initSlider} from './scripts/lib_slider.js';
 import {arrayCards} from './scripts/utils/generate_slides.js';
-import {selectSlide} from './scripts/utils/get-quantity-selection-slide.js';
 import {renderCards} from './scripts/utils/pagination_render.js';
 
 renderCards(arrayCards);
