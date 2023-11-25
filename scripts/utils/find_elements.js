@@ -12,11 +12,14 @@
  * @property {HTMLElement} pagination - Ссылка на элемент пагинации слайдера.
  */
 
+import generalConsts from '../consts/general.js';
+
 export const findElements = function () {
     const slidesCount = document.querySelectorAll('div.slider__cards').length;
+    const slider = document.querySelector(generalConsts.SLIDER_CLASS);
     const buttonNext = document.querySelector('.slider__button_next');
     const buttonPrev = document.querySelector('.slider__button_prev');
-    const sliderWrapper = document.querySelector('.slider__wrapper');
+    const sliderWrapper = document.querySelector(generalConsts.SLIDER_WRAPPER_CLASS);
     const pagination = document.querySelector('.pagination');
 
     return {
@@ -24,7 +27,7 @@ export const findElements = function () {
         buttonNext,
         buttonPrev, 
         sliderWrapper,
-        // slider,
+        slider,
         pagination,
     };
 };
