@@ -4,7 +4,7 @@ import {setQueryParam} from '../../utils/set-query-param.js';
 import {addPaginationElements} from '../render-pagination/index.js';
 
 import {urlChangeEvent} from './consts.js';
-import {getPaginationPagesCount} from './utils.js';
+import {getPaginationPagesCount, renderCardsToDOM} from './utils.js';
 
 export const renderCards = (cardsArr) => {
     /** 
@@ -16,31 +16,21 @@ export const renderCards = (cardsArr) => {
 
     function pageQueryParams (i) {
         const startIndex = (i - 1) * pageSize;
-        renderCardsToDOM(startIndex);
+        renderCardsToDOM(startIndex, cardsArr);
         setQueryParam({key: 'indexPage', value: i});
         sliderWrapper.dispatchEvent(urlChangeEvent);
-    }
-    
-    function renderCardsToDOM (startIndex) {
-        const {pageSize: currentVisibleRange} = getNamedQueryParams();
-        sliderWrapper.innerHTML = '';
-        const endIndex = Math.min(startIndex + currentVisibleRange, cardsArr.length);
-        for (let i = startIndex; i < endIndex; i++) {
-            const cardElement = cardsArr[i];
-            sliderWrapper.appendChild(cardElement);
-        }
     }
 
     addPaginationElements({
         paginationPagesCount: getPaginationPagesCount({
             cardsCount: cardsArr.length,
-            pageSize,
+            visibleRange: pageSize,
         }),
         pageQueryParams,
     });
 
     if (indexPage) {
-        renderCardsToDOM(indexPage * pageSize - pageSize);
+        renderCardsToDOM(indexPage * pageSize - pageSize, cardsArr);
     } else {
         renderCardsToDOM(0);
     }

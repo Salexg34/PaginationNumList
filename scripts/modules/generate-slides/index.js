@@ -1,13 +1,7 @@
-const addIndexElementToCard = (card, index) => {
-    const defaultIndexEl = document.createElement('div');
-    defaultIndexEl.textContent = index;
-    defaultIndexEl.classList.add('default_index');
-    card.setAttribute('data-slide-index', index);
-    card.appendChild(defaultIndexEl);
-};
+import {ELEMENTS_COUNT} from './consts.js';
+import {addIndexElementToCard} from './utils.js';
 
 const createSlider = () => {
-    const ELEMENTS_COUNT = 120;
     const arrayCards = [];
     const defaultCard = document.querySelector('.slider__cards');
 
@@ -30,11 +24,7 @@ const createSlider = () => {
 
     };
 
-    return generateSlides;
+    return generateSlides();
 
 };
-
-const generatorSlider = createSlider();
-const dataGeneratorSlider = generatorSlider();
-export const arrayCards = dataGeneratorSlider.arrayCards;
-export const sliderWrapper = dataGeneratorSlider.sliderWrapper;
+export default createSlider;

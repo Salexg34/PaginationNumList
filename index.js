@@ -2,14 +2,15 @@
  * Модуль initSlider
  * @module scripts/lib_slider
  */
-import {initSlider} from './scripts/lib_slider.js';
+import generateSlides from './scripts/modules/generate-slides/index.js';
+import {pageSizeSelect} from './scripts/modules/init-page-size-select/index.js';
+import {initSlider} from './scripts/modules/lib-slider/index.js';
 import {renderCards} from './scripts/modules/render-cards/index.js';
-import {arrayCards} from './scripts/utils/generate_slides.js';
-import {initPageSizeSelect} from './scripts/utils/get-quantity-selection-slide.js';
 
+const {arrayCards} = generateSlides();
 renderCards(arrayCards);
 initSlider(1, 200, 40, 3);
-initPageSizeSelect();
+pageSizeSelect();
 /**
  * вешаем обработчик события на изменения значения из выпадающего списка
 */

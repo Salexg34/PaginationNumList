@@ -17,7 +17,6 @@ import {getDotNumberWithPage} from './get-dot-number-with-page.js';
 export const paginationSlider = function paginationSlider ({slidesCount, pagination, choiceSlider}) {
     pagination.innerHTML = '';
     
-    console.log(slidesCount, 'paginationSlider');
     for (let i = 1; i < slidesCount + 1; i++) {
         const paginationDot = document.createElement('div');
         paginationDot.classList.add('dot');
@@ -25,8 +24,7 @@ export const paginationSlider = function paginationSlider ({slidesCount, paginat
         paginationDot.innerHTML = '<img src="/img/slider/paginationDotActive.svg">';
         pagination.appendChild(paginationDot);
 
-        if (i == 1) { // после обновления страницы активный слайдер только с индексом 1
-            console.log(i);
+        if (i == 1) {
             paginationDot.classList.add('active');
             document.querySelector(`
                 [data-slide-index = '${getDotNumberWithPage(i)}']

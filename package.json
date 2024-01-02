@@ -2,6 +2,7 @@
   "name": "lesson-fixes",
   "version": "1.0.0",
   "description": "",
+
   "main": "slider_script.js",
   "type": "commonjs",
   "scripts": {
@@ -9,6 +10,7 @@
     "lint": "./node_modules/.bin/eslint \"./**/*.{js,jsx}\"",
     "lint:fix": "npm run lint -- --fix"
   },
+
   "keywords": [],
   "author": "",
   "license": "ISC",

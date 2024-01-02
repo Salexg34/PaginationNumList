@@ -3,7 +3,7 @@ import {addPaginationWrapper} from './utils.js';
 export const addPaginationElements = ({
     paginationPagesCount, 
     pageQueryParams,
-}) => {
+}) => { 
     const sliderPaginationWrapper = addPaginationWrapper();
 
     for (let i = 1; i <= paginationPagesCount; i++) {

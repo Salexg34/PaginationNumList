@@ -13,9 +13,8 @@ export const getNamedQueryParams = () => {
     });
     const indexPage = getQueryParam({
         key: 'indexPage',
-        defaultValue: generalConsts.DEFAULT_PAGE_SIZE,
+        defaultValue: generalConsts.DEFAULT_INDEX_PAGE,
         typeConverter: parseInt,
     });
-    
     return {pageSize, indexPage};
 };
