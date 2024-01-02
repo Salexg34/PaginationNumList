@@ -30,5 +30,9 @@ a {
     width: 10%;
 }
 
-
-
+.default_index {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+}

@@ -1,7 +1,8 @@
-import generalConsts from './consts/general.js';
+import generalConsts from '../../consts/general.js';
+import {findElements} from '../../utils/find_elements.js';
+
 import {changeSliderProperties} from './utils/change_slider_properties.js';
 import {check} from './utils/check_offset.js';
-import {findElements} from './utils/find_elements.js';
 import {getDotNumberWithPage} from './utils/get-dot-number-with-page.js';
 import {getMaxWidth} from './utils/get_max_width.js';
 import {paginationSlider} from './utils/pagination_slider.js';
@@ -84,12 +85,10 @@ export const initSlider = function (scroll, width, gap, toShow) {
         const currentElements = document.querySelectorAll(`
             [data-slide-index = '${getDotNumberWithPage(currentDot)}']
         `);
-        console.log(currentDot);
         
         const currentDotElements = document.querySelectorAll(`
             [data-slide-index = '${currentDot}']
         `);
-        console.log(currentDot);
         
         const elementsToActivate = [...currentElements, ...currentDotElements];
         elementsToActivate.forEach(function (item) {
@@ -99,6 +98,5 @@ export const initSlider = function (scroll, width, gap, toShow) {
         offset = -((width + gap) * currentDot) + (width + gap);
         sliderWrapper.style.transform = `translateX(${offset}px)`;
         check({offset, maxWidth, buttonPrev, sliderWrapper, buttonNext});
-        console.log(maxWidth);
     }
 };
