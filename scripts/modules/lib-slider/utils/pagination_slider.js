@@ -2,7 +2,7 @@
 /**
  * Модуль paginationSlider
  * @module utils/pagination_slider
- * 
+ *
  * Создает пагинацию для слайдера и назначает обработчики событий для переключения слайдов.
  *
  * @param {object} paginationSlider - Объект с параметрами для создания пагинации и обработчиков событий.
@@ -12,11 +12,11 @@
  * @returns {void}
  */
 
-import {getDotNumberWithPage} from './get-dot-number-with-page.js';
+import {getDotNumberWithPage} from './get-dot-number-with-page';
 
 export const paginationSlider = function paginationSlider ({slidesCount, pagination, choiceSlider}) {
     pagination.innerHTML = '';
-    
+
     for (let i = 1; i < slidesCount + 1; i++) {
         const paginationDot = document.createElement('div');
         paginationDot.classList.add('dot');

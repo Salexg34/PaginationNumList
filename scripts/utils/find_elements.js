@@ -12,7 +12,7 @@
  * @property {HTMLElement} pagination - Ссылка на элемент пагинации слайдера.
  */
 
-import generalConsts from '../consts/general.js';
+import generalConsts from '../consts/general';
 
 export const findElements = function () {
     const slidesCount = document.querySelectorAll('div.slider__cards').length;
@@ -25,7 +25,7 @@ export const findElements = function () {
     return {
         slidesCount,
         buttonNext,
-        buttonPrev, 
+        buttonPrev,
         sliderWrapper,
         slider,
         pagination,

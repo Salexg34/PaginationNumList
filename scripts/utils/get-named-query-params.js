@@ -1,9 +1,9 @@
-import generalConsts from '../consts/general.js';
+import generalConsts from '../consts/general';
 
-import {getQueryParam} from './get-query-param.js';
+import {getQueryParam} from './get-query-param';
 
 export const getNamedQueryParams = () => {
-    /** 
+    /**
      * Получаем значение pageSize через функцию getQueryParam
     */
     const pageSize = getQueryParam({

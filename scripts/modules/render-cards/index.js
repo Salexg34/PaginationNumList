@@ -1,13 +1,13 @@
-import {findElements} from '../../utils/find_elements.js';
-import {getNamedQueryParams} from '../../utils/get-named-query-params.js';
-import {setQueryParam} from '../../utils/set-query-param.js';
-import {addPaginationElements} from '../render-pagination/index.js';
+import {findElements} from '../../utils/find_elements';
+import {getNamedQueryParams} from '../../utils/get-named-query-params';
+import {setQueryParam} from '../../utils/set-query-param';
+import {addPaginationElements} from '../render-pagination/index';
 
-import {urlChangeEvent} from './consts.js';
-import {getPaginationPagesCount, renderCardsToDOM} from './utils.js';
+import {urlChangeEvent} from './consts';
+import {getPaginationPagesCount, renderCardsToDOM} from './utils';
 
 export const renderCards = (cardsArr) => {
-    /** 
+    /**
      * Получаем значение visibleRange через функцию getQueryParam
     */
     const {pageSize, indexPage} = getNamedQueryParams();
