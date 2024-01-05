@@ -1,15 +1,15 @@
-import generalConsts from '../../consts/general.js';
-import {findElements} from '../../utils/find_elements.js';
+import generalConsts from '../../consts/general';
+import {findElements} from '../../utils/find_elements';
 
-import {changeSliderProperties} from './utils/change_slider_properties.js';
-import {check} from './utils/check_offset.js';
-import {getDotNumberWithPage} from './utils/get-dot-number-with-page.js';
-import {getMaxWidth} from './utils/get_max_width.js';
-import {paginationSlider} from './utils/pagination_slider.js';
+import {changeSliderProperties} from './utils/change_slider_properties';
+import {check} from './utils/check_offset';
+import {getDotNumberWithPage} from './utils/get-dot-number-with-page';
+import {getMaxWidth} from './utils/get_max_width';
+import {paginationSlider} from './utils/pagination_slider';
 
 /**
  * InitSlider
- * @param {number} scroll - Количество прокручиваемых слайдов 
+ * @param {number} scroll - Количество прокручиваемых слайдов
  * @param {number} width - Ширина слайда
  * @param {number} gap - отступ между слайдами
  * @param {number} toShow - Количество вывода слайдов к показу
@@ -35,7 +35,7 @@ export const initSlider = function (scroll, width, gap, toShow) {
         maxWidth = getMaxWidth({width, gap, slidesCount: event.pageSize, cardsToShow: toShow});
         choiceSlider(1);
     });
-    
+
     if (toShow <= scroll) {
         scroll = toShow;
     };
@@ -65,13 +65,13 @@ export const initSlider = function (scroll, width, gap, toShow) {
 
         choiceSlider(currentDot);
 
-    };    
+    };
 
     paginationSlider({slidesCount, pagination, choiceSlider});
 
     function choiceSlider (slideIndex) {
         currentDot = slideIndex;
-        
+
         const activeElements = document.querySelectorAll('.dot.active');
         activeElements.forEach(function (item) {
             item.classList.remove('active');
@@ -85,16 +85,16 @@ export const initSlider = function (scroll, width, gap, toShow) {
         const currentElements = document.querySelectorAll(`
             [data-slide-index = '${getDotNumberWithPage(currentDot)}']
         `);
-        
+
         const currentDotElements = document.querySelectorAll(`
             [data-slide-index = '${currentDot}']
         `);
-        
+
         const elementsToActivate = [...currentElements, ...currentDotElements];
         elementsToActivate.forEach(function (item) {
             item.classList.add('active');
         });
-        
+
         offset = -((width + gap) * currentDot) + (width + gap);
         sliderWrapper.style.transform = `translateX(${offset}px)`;
         check({offset, maxWidth, buttonPrev, sliderWrapper, buttonNext});

@@ -1,6 +1,6 @@
-import {setQueryParam} from '../../utils/set-query-param.js';
+import {setQueryParam} from '../../utils/set-query-param';
 
-import {sizeChangeEvent} from './consts.js';
+import {sizeChangeEvent} from './consts';
 
 //Создаем кастомный обработчик событий
 export const handleSelectChange = () => {

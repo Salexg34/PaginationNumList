@@ -1,7 +1,7 @@
-import generalConsts from '../../consts/general.js';
-import {getQueryParam} from '../../utils/get-query-param.js';
+import generalConsts from '../../consts/general';
+import {getQueryParam} from '../../utils/get-query-param';
 
-import {handleSelectChange} from './utils.js';
+import {handleSelectChange} from './utils';
 
 export const pageSizeSelect = () => {
     const selectSlide = document.getElementById('quantitySelect');
@@ -12,7 +12,7 @@ export const pageSizeSelect = () => {
         defaultValue: generalConsts.DEFAULT_PAGE_SIZE,
         typeConverter: parseInt,
     });
-    
+
     const optionToSelect = selectSlide.querySelector(`option[value = '${initialPageSize}']`);
     optionToSelect.setAttribute('selected', true);
 };

@@ -1,5 +1,5 @@
-import {ELEMENTS_COUNT} from './consts.js';
-import {addIndexElementToCard} from './utils.js';
+import {ELEMENTS_COUNT} from './consts';
+import {addIndexElementToCard} from './utils';
 
 const createSlider = () => {
     const arrayCards = [];
