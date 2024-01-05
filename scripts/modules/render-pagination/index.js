@@ -1,4 +1,4 @@
-import {addPaginationWrapper} from './utils.js';
+import {addPaginationWrapper} from './utils';
 
 export const addPaginationElements = ({
     paginationPagesCount,

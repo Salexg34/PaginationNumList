@@ -1,5 +1,5 @@
-import generalConsts from '../../../consts/general.js';
-import {getQueryParam} from '../../../utils/get-query-param.js';
+import generalConsts from '../../../consts/general';
+import {getQueryParam} from '../../../utils/get-query-param';
 
 export const getDotNumberWithPage = (currentDot) => {
     const indexPage = getQueryParam({
