@@ -28,6 +28,7 @@ export const addPaginationElements = ({
 
     let startPaginationPage = Math.max(1, currentPage - Math.floor(MAX_VISIBLE_PAGE / 2));
     let endPaginationPage = Math.min(startPaginationPage + MAX_VISIBLE_PAGE - 1, paginationPagesCount);
+    const endPaginationGapPage = paginationPagesCount - Math.round(MAX_VISIBLE_PAGE / 2);
 
     //определяем нужен ли разделитель в начале пагинации
     if (startPaginationPage > 1) {
@@ -56,42 +57,56 @@ export const addPaginationElements = ({
         };
     };
 
-    console.log(startPaginationPage, 'SPP');
-    console.log(endPaginationPage, 'EPP');
+    if ((currentPage == paginationPagesCount) || (currentPage >= endPaginationGapPage)) {
 
-    // Создаем видимые номера страниц
-    for (let i = startPaginationPage; i <= endPaginationPage; i++) {
-        const paginationNum = createPaginationNum(
-            i,
-            () => {
-                pageQueryParams(i);
-                setActivePage(i);
-            },
-            'pagination__num',
-        );
+        startPaginationPage = paginationPagesCount - MAX_VISIBLE_PAGE + 1;
+        endPaginationPage = startPaginationPage + MAX_VISIBLE_PAGE - 1;
 
-        if (currentPage == i) {
-            paginationNum.classList.add('active');
+        for (let i = startPaginationPage; i <= endPaginationPage; i++) {
+            let paginationNum = createPaginationNum(
+                i,
+                () => {
+                    pageQueryParams(i);
+                    setActivePage(i);
+                },
+                'pagination__num',
+            );
+            if (currentPage == i) {
+                paginationNum.classList.add('active');
+            };
+            sliderPaginationWrapper.appendChild(paginationNum);
+        }
+    } else {
+        for (let i = startPaginationPage; i <= endPaginationPage; i++) {
+
+            let paginationNum = createPaginationNum(
+                i,
+                () => {
+                    pageQueryParams(i);
+                    setActivePage(i);
+                },
+                'pagination__num',
+            );
+
+            if (currentPage == i) {
+                paginationNum.classList.add('active');
+            };
+
+            sliderPaginationWrapper.appendChild(paginationNum);
         };
-
-        sliderPaginationWrapper.appendChild(paginationNum);
-    };
+    }
 
     // создаем разделитель в конце
-    if (endPaginationPage < paginationPagesCount) {
+    if (currentPage < endPaginationGapPage) {
         const paginationGapEnd = createPaginationNum(
             '...>',
             () => {
                 pageQueryParams(endPaginationPage);
                 setActivePage(endPaginationPage);
-                // updatePagination(endPaginationPage - 2, endPaginationPage + 2);
-                // window.location.reload();
             },
             'pagination__gap',
         );
-
         sliderPaginationWrapper.appendChild(paginationGapEnd);
-
         const paginationNumEnd = createPaginationNum(
             paginationPagesCount,
             () => {
@@ -102,6 +117,5 @@ export const addPaginationElements = ({
         );
 
         sliderPaginationWrapper.appendChild(paginationNumEnd);
-    };
+    }
 };
-

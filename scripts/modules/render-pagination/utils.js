@@ -1,6 +1,5 @@
 import {findElements} from '../../utils/find_elements';
-
-import {addPaginationElements} from './index';
+import {getNamedQueryParams} from '../../utils/get-named-query-params';
 
 export const addPaginationWrapper = () => {
     const {slider} = findElements();
@@ -48,18 +47,21 @@ export const createPaginationNum = (pageNumber, onClick, elementClass) => {
     return paginationNum;
 };
 
-// export const updatePagination = (start, end) => {
-//     const sliderPaginationWrapper = addPaginationWrapper();
-
-//     // Удаляем текущую пагинацию
-//     sliderPaginationWrapper.innerHTML = '';
-
-//     // Создаем новый диапазон пагинации
-//     for (let i = start; i <= end; i++) {
-//         const paginationNum = createPaginationNum(i, () => {
-//             console.log(12345);
-//         });
-
-//         sliderPaginationWrapper.appendChild(paginationNum);
-//     };
-// };
+export const createPagination = (start, end) => {
+    const {indexPage: currentPage} = getNamedQueryParams();
+    const sliderPaginationWrapper = addPaginationWrapper();
+    for (let i = start; i <= end; i++) {
+        let paginationNum = createPaginationNum(
+            i,
+            () => {
+                // pageQueryParams(i);
+                setActivePage(i);
+            },
+            'pagination__num',
+        );
+        if (currentPage == i) {
+            paginationNum.classList.add('active');
+        };
+        sliderPaginationWrapper.appendChild(paginationNum);
+    }
+};
